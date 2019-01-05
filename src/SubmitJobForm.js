@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/lib/Button';
 import Form from 'react-bootstrap/lib/Form';
 import { stringify } from 'qs';
 
-import titleize from './titleize';
+import formFields from './submitJobFormFields';
 
 const INITIAL_FIELDS = {
   role: '',
@@ -63,15 +63,15 @@ class SubmitJobForm extends Component {
 
     return (
       <Form onSubmit={this.handleSubmit}>
-        {Object.keys(fields).map(field => (
-          <Form.Group key={field}>
-            <Form.Label>{titleize(field)}</Form.Label>
+        {formFields.map(({ label, name, as }) => (
+          <Form.Group key={name}>
+            <Form.Label>{label}</Form.Label>
             <Form.Control
-              name={field}
-              type="text"
-              value={fields[field]}
-              onChange={this.handleChange(field)}
-              isInvalid={errors[field]}
+              name={name}
+              as={as}
+              value={fields[name]}
+              onChange={this.handleChange(name)}
+              isInvalid={errors[name]}
             />
           </Form.Group>
         ))}
