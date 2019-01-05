@@ -6,8 +6,6 @@ import SignUp from './SignUp';
 import SignIn from './SignIn';
 import SubmitJob from './SubmitJob';
 
-import './App.css';
-
 class App extends Component {
   render() {
     return (

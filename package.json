@@ -2,11 +2,15 @@
   "name": "rcruitme-front",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:9000",
   "devDependencies": {
     "react-scripts": "2.1.2"
   },
   "dependencies": {
+    "bootstrap": "^4.2.1",
+    "qs": "^6.6.0",
     "react": "^16.7.0",
+    "react-bootstrap": "^1.0.0-beta.3",
     "react-dom": "^16.7.0",
     "react-router-dom": "^4.3.1"
   },
