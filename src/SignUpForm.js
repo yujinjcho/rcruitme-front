@@ -1,18 +1,21 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
 import Button from 'react-bootstrap/lib/Button';
 import Form from 'react-bootstrap/lib/Form';
 import { stringify } from 'qs';
 
-import formFields from './signInFormFields';
+import formFields from './signUpFormFields';
 
-class SignInForm extends Component {
+const INITIAL_FIELDS = {
+  email: '',
+  firstName: '',
+  lastName: '',
+  password: ''
+};
+
+class SignUpForm extends Component {
   state = {
-    fields: {
-      email: '',
-      password: ''
-    },
-    loggedIn: false
+    fields: { ...INITIAL_FIELDS },
+    errors: {}
   };
 
   handleChange = field => e =>
@@ -27,7 +30,7 @@ class SignInForm extends Component {
     e.preventDefault();
     e.stopPropagation();
 
-    fetch('/sign-in', {
+    fetch('/sign-up', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
@@ -35,19 +38,25 @@ class SignInForm extends Component {
       body: stringify(this.state.fields)
     })
       .then(res => res.status === 400
-        ? res.json().then(_ => this.props.onError('Invalid login.'))
+        ? res.json().then(this.handleError)
         : res.json().then(this.handleSuccess)
       )
       .catch(_ => this.props.onError('There was an error.'));
   };
 
-  handleSuccess = _ =>
-    this.setState({ loggedIn: true });
+  handleSuccess = ({ message }) =>
+    this.setState({
+      fields: INITIAL_FIELDS,
+      errors: {}
+    }, this.props.onMessage(message));
+
+  handleError = errors =>
+    this.setState({
+      errors
+    }, this.props.onError('Please correctly fill out required fields.'));
 
   render() {
-    const { fields, loggedIn } = this.state;
-
-    if (loggedIn) return <Redirect to="/" />;
+    const { fields, errors } = this.state;
 
     return (
       <Form onSubmit={this.handleSubmit}>
@@ -59,6 +68,7 @@ class SignInForm extends Component {
               as={as}
               value={fields[name]}
               onChange={this.handleChange(name)}
+              isInvalid={errors[name]}
             />
           </Form.Group>
         ))}
@@ -68,4 +78,4 @@ class SignInForm extends Component {
   }
 }
 
-export default SignInForm;
+export default SignUpForm;
