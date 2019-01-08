@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Container from 'react-bootstrap/lib/Container';
 import Alert from 'react-bootstrap/lib/Alert';
+import Container from 'react-bootstrap/lib/Container';
 
 import SubmitJobForm from './SubmitJobForm';
 
