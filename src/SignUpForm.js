@@ -48,12 +48,18 @@ class SignUpForm extends Component {
     this.setState({
       fields: INITIAL_FIELDS,
       errors: {}
-    }, this.props.onMessage(message));
+    }, () => {
+      this.props.onMessage(message);
+      this.props.onError('');
+    });
 
   handleError = errors =>
     this.setState({
       errors
-    }, this.props.onError('Please correctly fill out required fields.'));
+    }, () => {
+      this.props.onError('Please correctly fill out required fields.');
+      this.props.onMessage('');
+    });
 
   render() {
     const { fields, errors } = this.state;
