@@ -1,22 +1,28 @@
 export default [
   {
+    label: 'User Type',
+    name: 'userType',
+    type: 'select',
+    options: ['candidate', 'recruiter']
+  },
+  {
     label: 'Email',
     name: 'email',
-    as: 'input'
+    type: 'input'
   },
   {
     label: 'First Name',
     name: 'firstName',
-    as: 'input'
+    type: 'input'
   },
   {
     label: 'Last Name',
     name: 'lastName',
-    as: 'input'
+    type: 'input'
   },
   {
     label: 'Password',
     name: 'password',
-    as: 'input'
+    type: 'input'
   }
 ];
