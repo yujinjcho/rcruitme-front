@@ -63,12 +63,12 @@ class SubmitJobForm extends Component {
 
     return (
       <Form onSubmit={this.handleSubmit}>
-        {formFields.map(({ label, name, as }) => (
+        {formFields.map(({ label, name, type }) => (
           <Form.Group key={name}>
             <Form.Label>{label}</Form.Label>
             <Form.Control
               name={name}
-              as={as}
+              as={type}
               value={fields[name]}
               onChange={this.handleChange(name)}
               isInvalid={errors[name]}

@@ -2,36 +2,36 @@ export default [
   {
     label: 'Role',
     name: 'role',
-    as: 'input'
+    type: 'input'
   },
   {
     label: 'Company',
     name: 'company',
-    as: 'input'
+    type: 'input'
   },
   {
     label: 'Location',
     name: 'location',
-    as: 'input'
+    type: 'input'
   },
   {
     label: 'Annual Salary',
     name: 'salary',
-    as: 'input'
+    type: 'input'
   },
   {
     label: 'Additional Compensation',
     name: 'compensation',
-    as: 'input'
+    type: 'input'
   },
   {
     label: 'Description',
     name: 'description',
-    as: 'textarea'
+    type: 'textarea'
   },
   {
     label: 'Benefits / Other',
     name: 'benefits',
-    as: 'textarea'
+    type: 'textarea'
   }
 ];
