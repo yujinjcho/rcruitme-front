@@ -3,14 +3,23 @@ import Button from 'react-bootstrap/lib/Button';
 import Form from 'react-bootstrap/lib/Form';
 import { stringify } from 'qs';
 
+import capitalize from './capitalize';
 import formFields from './signUpFormFields';
+import noop from './noop';
 
 const INITIAL_FIELDS = {
+  userType: 'candidate',
   email: '',
   firstName: '',
   lastName: '',
   password: ''
 };
+
+const optionsForField = type => ({
+  select: options => options.map(option => (
+    <option key={option} value={option}>{capitalize(option)}</option>
+  ))
+})[type] || noop;
 
 class SignUpForm extends Component {
   state = {
@@ -66,15 +75,16 @@ class SignUpForm extends Component {
 
     return (
       <Form onSubmit={this.handleSubmit}>
-        {formFields.map(({ label, name, as }) => (
+        {formFields.map(({ label, name, type, options }) => (
           <Form.Group key={name}>
             <Form.Label>{label}</Form.Label>
             <Form.Control
               name={name}
-              as={as}
+              as={type}
               value={fields[name]}
               onChange={this.handleChange(name)}
               isInvalid={errors[name]}
+              children={optionsForField(type)(options)}
             />
           </Form.Group>
         ))}
