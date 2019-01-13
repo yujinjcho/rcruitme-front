@@ -39,7 +39,7 @@ class SignUpForm extends Component {
     e.preventDefault();
     e.stopPropagation();
 
-    fetch('/sign-up', {
+    fetch(`/sign-up?redirect=${window.location.origin}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
