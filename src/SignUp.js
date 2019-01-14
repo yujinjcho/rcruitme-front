@@ -23,7 +23,7 @@ class SignUp extends Component {
         {this.state.message && <Alert variant="success">{this.state.message}</Alert>}
         {this.state.error && <Alert variant="danger">{this.state.error}</Alert>}
         <SignUpForm
-          endpoint="/sign-up"
+          endpoint={"/sign-up?redirect=" + window.location.origin}
           onMessage={this.handleMessage('message')}
           onError={this.handleMessage('error')}
         />
