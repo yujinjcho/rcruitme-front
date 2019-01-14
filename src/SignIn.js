@@ -50,7 +50,7 @@ class SignIn extends Component {
         <h3>Existing Account Sign-In</h3>
         {providers.map(({ id, href }) => (
           <div key={id}>
-            <a href={`${href}?redirect=${window.location.origin}`} className={`provider ${id}`}>
+            <a href={`${href}?redirect=${window.location.origin}/auth`} className={`provider ${id}`}>
               {capitalize(id)} login
             </a>
           </div>

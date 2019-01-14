@@ -1,3 +1,5 @@
+import { parse } from 'qs';
+
 const key = 'X-Auth-Token';
 
 const header = () => ({
@@ -10,8 +12,12 @@ const save = token =>
 const saveFromHeaders = headers =>
   save(headers.get(key));
 
+const saveFromQueryString = query =>
+  save(parse(query, { ignoreQueryPrefix: true }).token);
+
 export default {
   key,
   header,
-  saveFromHeaders
+  saveFromHeaders,
+  saveFromQueryString
 };
