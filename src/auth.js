@@ -4,11 +4,14 @@ const header = () => ({
   [key]: localStorage.getItem('token')
 });
 
-const save = res =>
-  localStorage.setItem('token', res.headers.get(key));
+const save = token =>
+  localStorage.setItem('token', token);
+
+const saveFromHeaders = headers =>
+  save(headers.get(key));
 
 export default {
   key,
   header,
-  save
+  saveFromHeaders
 };

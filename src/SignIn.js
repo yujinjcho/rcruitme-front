@@ -24,7 +24,7 @@ class SignIn extends Component {
   }
 
   handleSuccess = (_, res) => {
-    auth.save(res);
+    auth.saveFromHeaders(res.headers);
     this.setState({ loggedIn: true });
   };
 
