@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom';
 import Alert from 'react-bootstrap/lib/Alert';
 import Container from 'react-bootstrap/lib/Container';
 
+import auth from './auth';
 import capitalize from './capitalize';
 import formFields from './signInFormFields';
 import formFrom from './formFrom';
@@ -22,8 +23,10 @@ class SignIn extends Component {
       .then(data => this.setState(data));
   }
 
-  handleSuccess = _ =>
+  handleSuccess = (_, res) => {
+    auth.save(res);
     this.setState({ loggedIn: true });
+  };
 
   handleError = error =>
     this.setState({ error });

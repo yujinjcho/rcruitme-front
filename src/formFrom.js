@@ -45,19 +45,19 @@ export default formFields => {
       })
         .then(res => res.status === 400
           ? res.json().then(this.handleError)
-          : res.json().then(this.handleSuccess)
+          : res.json().then(data => this.handleSuccess(data, res))
         )
         .catch(_ => this.props.onError('There was an error.'));
     };
 
-    handleSuccess = ({ message }) =>
+    handleSuccess = (data, res) =>
       this.setState({
         fields: initialFields,
         errors: {}
       }, () => {
-        if (this.props.onSuccess) return this.props.onSuccess();
+        if (this.props.onSuccess) return this.props.onSuccess(data, res);
 
-        this.props.onMessage(this.props.successMessage || message);
+        this.props.onMessage(this.props.successMessage || data.message);
         this.props.onError('')
       });
 
