@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/lib/Button';
 import Form from 'react-bootstrap/lib/Form';
 import { stringify } from 'qs';
 
+import auth from './auth';
 import capitalize from './capitalize';
 import noop from './noop';
 
@@ -39,6 +40,7 @@ export default formFields => {
       fetch(this.props.endpoint, {
         method: 'POST',
         headers: {
+          ...auth.header(),
           'Content-Type': 'application/x-www-form-urlencoded'
         },
         body: stringify(this.state.fields)
