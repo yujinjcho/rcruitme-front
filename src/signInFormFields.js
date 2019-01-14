@@ -2,11 +2,11 @@ export default [
   {
     label: 'Email',
     name: 'email',
-    as: 'input'
+    type: 'input'
   },
   {
     label: 'Password',
     name: 'password',
-    as: 'input'
+    type: 'input'
   }
 ];
