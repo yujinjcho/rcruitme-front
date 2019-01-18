@@ -40,7 +40,7 @@ export default formFields => {
       fetch(this.props.endpoint, {
         method: 'POST',
         headers: {
-          ...auth.header(),
+          ...(this.props.authed ? auth.header() : {}),
           'Content-Type': 'application/x-www-form-urlencoded'
         },
         body: stringify(this.state.fields)
