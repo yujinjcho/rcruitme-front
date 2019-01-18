@@ -41,6 +41,7 @@ export default formFields => {
         method: 'POST',
         headers: {
           ...(this.props.authed ? auth.header() : {}),
+          'X-Requested-With': 'XMLHTTPRequest',
           'Content-Type': 'application/x-www-form-urlencoded'
         },
         body: stringify(this.state.fields)
