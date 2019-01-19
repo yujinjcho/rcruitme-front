@@ -15,9 +15,13 @@ const saveFromHeaders = headers =>
 const saveFromQueryString = query =>
   save(parse(query, { ignoreQueryPrefix: true }).token);
 
+const removeFromHeader = () =>
+  localStorage.removeItem('token');
+
 export default {
   key,
   header,
   saveFromHeaders,
-  saveFromQueryString
+  saveFromQueryString,
+  removeFromHeader
 };

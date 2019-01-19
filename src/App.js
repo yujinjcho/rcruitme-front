@@ -5,6 +5,7 @@ import AuthRedirect from './AuthRedirect';
 import Home from './Home';
 import SignUp from './SignUp';
 import SignIn from './SignIn';
+import SignOut from './SignOut';
 import SubmitJob from './SubmitJob';
 
 class App extends Component {
@@ -16,6 +17,7 @@ class App extends Component {
             <Route exact path="/" component={Home} />
             <Route exact path="/sign-up" component={SignUp} />
             <Route exact path="/sign-in" component={SignIn} />
+            <Route exact path="/sign-out" component={SignOut} />
             <Route exact path="/submit-job" component={SubmitJob} />
             <Route path="/auth" component={AuthRedirect} />
           </div>
