@@ -7,11 +7,13 @@ import SignUp from './SignUp';
 import SignIn from './SignIn';
 import SignOut from './SignOut';
 import SubmitJob from './SubmitJob';
+import Navigation from './Navigation';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
+        <Navigation />
         <Router>
           <div>
             <Route exact path="/" component={Home} />
