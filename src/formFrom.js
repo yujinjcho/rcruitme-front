@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/lib/Button';
 import Form from 'react-bootstrap/lib/Form';
 import { stringify } from 'qs';
 
+import auth from './auth';
 import capitalize from './capitalize';
 import noop from './noop';
 
@@ -39,25 +40,27 @@ export default formFields => {
       fetch(this.props.endpoint, {
         method: 'POST',
         headers: {
+          ...(this.props.authed ? auth.header() : {}),
+          'X-Requested-With': 'XMLHTTPRequest',
           'Content-Type': 'application/x-www-form-urlencoded'
         },
         body: stringify(this.state.fields)
       })
         .then(res => res.status === 400
           ? res.json().then(this.handleError)
-          : res.json().then(this.handleSuccess)
+          : res.json().then(data => this.handleSuccess(data, res))
         )
         .catch(_ => this.props.onError('There was an error.'));
     };
 
-    handleSuccess = ({ message }) =>
+    handleSuccess = (data, res) =>
       this.setState({
         fields: initialFields,
         errors: {}
       }, () => {
-        if (this.props.onSuccess) return this.props.onSuccess();
+        if (this.props.onSuccess) return this.props.onSuccess(data, res);
 
-        this.props.onMessage(this.props.successMessage || message);
+        this.props.onMessage(this.props.successMessage || data.message);
         this.props.onError('')
       });
 

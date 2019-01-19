@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom';
 import Alert from 'react-bootstrap/lib/Alert';
 import Container from 'react-bootstrap/lib/Container';
 
+import auth from './auth';
 import capitalize from './capitalize';
 import formFields from './signInFormFields';
 import formFrom from './formFrom';
@@ -22,8 +23,10 @@ class SignIn extends Component {
       .then(data => this.setState(data));
   }
 
-  handleSuccess = _ =>
+  handleSuccess = (_, res) => {
+    auth.saveFromHeaders(res.headers);
     this.setState({ loggedIn: true });
+  };
 
   handleError = error =>
     this.setState({ error });
@@ -47,7 +50,7 @@ class SignIn extends Component {
         <h3>Existing Account Sign-In</h3>
         {providers.map(({ id, href }) => (
           <div key={id}>
-            <a href={`${href}?redirect=${window.location.origin}`} className={`provider ${id}`}>
+            <a href={`${href}?redirect=${window.location.origin}/auth`} className={`provider ${id}`}>
               {capitalize(id)} login
             </a>
           </div>
