@@ -1,23 +1,19 @@
 import React, { Component } from 'react';
-import { Navbar,Nav,NavItem} from 'react-bootstrap';
+import { Navbar, Nav } from 'react-bootstrap';
+import SignOut from './SignOut';
 
 class Navigation extends Component {
 
   render() {
 
     return (
-      <Navbar inverse collapseOnSelect>
-        <Navbar.Brand>
-				  Rcruitme
-        </Navbar.Brand>
-        <Navbar.Toggle />
-        <Navbar.Collapse>
-          <Nav pullRight>
-            <NavItem href="/" to="/">
-                Sign-Out
-            </NavItem>
-          </Nav>
-        </Navbar.Collapse>
+      <Navbar bg="light" expand="lg">
+        <Navbar.Brand>Rcruitme</Navbar.Brand>
+        <Nav className="mr-auto">
+        </Nav>
+        <Nav>
+          <SignOut />
+        </Nav>
       </Navbar>
     );
   }

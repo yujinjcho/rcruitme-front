@@ -1,20 +1,18 @@
 import React, { Component } from 'react';
-import Container from 'react-bootstrap/lib/Container';
-
+import { Nav } from 'react-bootstrap';
 import auth from './auth';
 
 class SignOut extends Component {
-
-  componentDidMount() {
-    auth.removeFromHeader();
-  }
+  logOut(e) {
+    e.preventDefault();
+    auth.logOut();
+  };
 
   render() {
     return (
-      <Container>
-        <h1>Sign Out</h1>
-        <h3>You've been signed out</h3>
-      </Container>
+      <Nav.Link onClick={this.logOut.bind(this)}>
+        Sign Out
+      </Nav.Link>
     );
   }
 }

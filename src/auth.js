@@ -15,13 +15,17 @@ const saveFromHeaders = headers =>
 const saveFromQueryString = query =>
   save(parse(query, { ignoreQueryPrefix: true }).token);
 
-const removeFromHeader = () =>
+const logOut = () =>
   localStorage.removeItem('token');
+
+const loggedIn = () =>
+  localStorage.getItem('token') !== null
 
 export default {
   key,
   header,
   saveFromHeaders,
   saveFromQueryString,
-  removeFromHeader
+  logOut,
+  loggedIn,
 };

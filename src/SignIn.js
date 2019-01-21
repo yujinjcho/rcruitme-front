@@ -12,7 +12,7 @@ const SignInForm = formFrom(formFields);
 
 class SignIn extends Component {
   state = {
-    loggedIn: false,
+    loggedIn: auth.loggedIn(),
     providers: [],
     error: ''
   };
@@ -25,7 +25,7 @@ class SignIn extends Component {
 
   handleSuccess = (_, res) => {
     auth.saveFromHeaders(res.headers);
-    this.setState({ loggedIn: true });
+    this.setState({ loggedIn: auth.loggedIn() });
   };
 
   handleError = error =>
