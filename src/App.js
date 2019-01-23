@@ -6,11 +6,13 @@ import Home from './Home';
 import SignUp from './SignUp';
 import SignIn from './SignIn';
 import SubmitJob from './SubmitJob';
+import Navigation from './Navigation';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
+        <Navigation />
         <Router>
           <div>
             <Route exact path="/" component={Home} />
