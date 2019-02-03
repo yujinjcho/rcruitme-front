@@ -15,21 +15,22 @@ class SignIn extends Component {
   state = {
     loggedIn: auth.loggedIn(),
     providers: [],
-    error: ''
+    error: '',
+    redirect: ''
   };
 
   endPoint() {
     const baseUrl = "/sign-in";
-    const { redirect } = parse(window.location.search, { ignoreQueryPrefix: true });
-    return redirect ? `${baseUrl}?redirect=${redirect}` : baseUrl;
+    return this.state.redirect ? `${baseUrl}?redirect=${this.state.redirect}` : baseUrl;
   };
 
-  socialRedirect() {
-    const { redirect } = parse(window.location.search, { ignoreQueryPrefix: true });
-    return redirect ? `&jobRedirect=${redirect}` : "";
+  postAuthRedirect() {
+    return this.state.redirect ? `&postAuthRedirect=${this.state.redirect}` : "";
   };
 
   componentDidMount() {
+    const { redirect } = parse(window.location.search, { ignoreQueryPrefix: true });
+    if (redirect) this.setState({ redirect: redirect });
     fetch('/sign-in')
       .then(res => res.json())
       .then(data => this.setState(data));
@@ -66,7 +67,7 @@ class SignIn extends Component {
         <h3>Existing Account Sign-In</h3>
         {providers.map(({ id, href }) => (
           <div key={id}>
-            <a href={`${href}?redirect=${window.location.origin}/auth${this.socialRedirect()}`} className={`provider ${id}`}>
+            <a href={`${href}?redirect=${window.location.origin}/auth${this.postAuthRedirect()}`} className={`provider ${id}`}>
               {capitalize(id)} login
             </a>
           </div>
