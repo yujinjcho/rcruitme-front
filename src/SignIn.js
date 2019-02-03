@@ -24,6 +24,10 @@ class SignIn extends Component {
     return redirect ? `${baseUrl}?redirect=${redirect}` : baseUrl;
   };
 
+  socialRedirect() {
+    const { redirect } = parse(window.location.search, { ignoreQueryPrefix: true });
+    return redirect ? `&jobRedirect=${redirect}` : "";
+  };
 
   componentDidMount() {
     fetch('/sign-in')
@@ -62,7 +66,7 @@ class SignIn extends Component {
         <h3>Existing Account Sign-In</h3>
         {providers.map(({ id, href }) => (
           <div key={id}>
-            <a href={`${href}?redirect=${window.location.origin}/auth`} className={`provider ${id}`}>
+            <a href={`${href}?redirect=${window.location.origin}/auth${this.socialRedirect()}`} className={`provider ${id}`}>
               {capitalize(id)} login
             </a>
           </div>
