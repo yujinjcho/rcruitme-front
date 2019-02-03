@@ -6,6 +6,7 @@ class SignOut extends Component {
   logOut(e) {
     e.preventDefault();
     auth.logOut();
+    window.location = window.location.origin
   };
 
   render() {

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Alert from 'react-bootstrap/lib/Alert';
 import Container from 'react-bootstrap/lib/Container';
+import { parse } from 'qs';
 
 import formFields from './signUpFormFields';
 import formFrom from './formFrom';
@@ -13,6 +14,11 @@ class SignUp extends Component {
     error: ''
   };
 
+  redirectUrl() {
+    const { redirect } = parse(window.location.search, { ignoreQueryPrefix: true });
+    return redirect ? redirect : window.location.origin;
+  };
+
   handleMessage = type => message =>
     this.setState({ [type]: message });
 
@@ -23,7 +29,7 @@ class SignUp extends Component {
         {this.state.message && <Alert variant="success">{this.state.message}</Alert>}
         {this.state.error && <Alert variant="danger">{this.state.error}</Alert>}
         <SignUpForm
-          endpoint={"/sign-up?redirect=" + window.location.origin}
+          endpoint={"/sign-up?redirect=" + this.redirectUrl()}
           onMessage={this.handleMessage('message')}
           onError={this.handleMessage('error')}
         />

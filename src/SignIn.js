@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import Alert from 'react-bootstrap/lib/Alert';
 import Container from 'react-bootstrap/lib/Container';
+import { parse } from 'qs';
 
 import auth from './auth';
 import capitalize from './capitalize';
@@ -17,14 +18,25 @@ class SignIn extends Component {
     error: ''
   };
 
+  endPoint() {
+    const baseUrl = "/sign-in";
+    const { redirect } = parse(window.location.search, { ignoreQueryPrefix: true });
+    return redirect ? `${baseUrl}?redirect=${redirect}` : baseUrl;
+  };
+
+
   componentDidMount() {
     fetch('/sign-in')
       .then(res => res.json())
       .then(data => this.setState(data));
   }
 
-  handleSuccess = (_, res) => {
+  handleSuccess = (data, res) => {
     auth.saveFromHeaders(res.headers);
+
+    if (data.redirect) {
+      window.location = data.redirect;
+    };
     this.setState({ loggedIn: auth.loggedIn() });
   };
 
@@ -41,7 +53,7 @@ class SignIn extends Component {
         <h1>Sign In</h1>
         {error && <Alert variant="danger">{error}</Alert>}
         <SignInForm
-          endpoint="/sign-in"
+          endpoint= {this.endPoint()}
           onSuccess={this.handleSuccess}
           onError={this.handleError}
           hideInvalid
