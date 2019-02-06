@@ -96,5 +96,10 @@ export default formFields => {
     }
   }
 
+  RemoteForm.defaultProps = {
+    onMessage: noop,
+    onError: noop
+  };
+
   return RemoteForm;
 };
