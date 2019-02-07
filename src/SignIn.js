@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import Alert from 'react-bootstrap/lib/Alert';
 import Container from 'react-bootstrap/lib/Container';
-import { parse } from 'qs';
+import url from 'url';
 
 import auth from './auth';
+import query from './query';
+
 import capitalize from './capitalize';
 import formFields from './signInFormFields';
 import formFrom from './formFrom';
@@ -25,11 +27,16 @@ class SignIn extends Component {
   };
 
   postAuthRedirect() {
-    return this.state.redirect ? `&postAuthRedirect=${this.state.redirect}` : "";
+    if (this.state.redirect) {
+      const path = url.parse(this.state.redirect).path;
+      return `&postAuthRedirect=${path}`
+    } else {
+      return "";
+    }
   };
 
   componentDidMount() {
-    const { redirect } = parse(window.location.search, { ignoreQueryPrefix: true });
+    const { redirect } = query.parameters()
     if (redirect) this.setState({ redirect: redirect });
     fetch('/sign-in')
       .then(res => res.json())
@@ -40,7 +47,8 @@ class SignIn extends Component {
     auth.saveFromHeaders(res.headers);
 
     if (data.redirect) {
-      window.location = data.redirect;
+      const path = url.parse(data.redirect).path;
+      this.props.history.push(path);
     };
     this.setState({ loggedIn: auth.loggedIn() });
   };

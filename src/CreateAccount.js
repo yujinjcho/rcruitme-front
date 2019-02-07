@@ -1,23 +1,19 @@
-import { parse } from 'qs';
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { Nav } from 'react-bootstrap';
 
+import query from './query';
+
 class CreateAccount extends Component {
-  signUp(e) {
-    e.preventDefault();
-
-    const { redirect } = parse(window.location.search, { ignoreQueryPrefix: true });
-
-    const baseUrl = "/sign-up"
-    const url = redirect ? `${baseUrl}?redirect=${redirect}` : baseUrl;
-    window.location = window.location.origin + url;
-  };
 
   render() {
+    const { redirect } = query.parameters();
+    const baseUrl = "/sign-up"
+    const url = redirect ? `${baseUrl}?redirect=${redirect}` : baseUrl;
     return (
-      <Nav.Link onClick={this.signUp.bind(this)} href="/sign-up">
-        Create Account
-      </Nav.Link>
+      <Nav.Item>
+        <Link to={url}>Create Account</Link>
+      </Nav.Item>
     );
   }
 }

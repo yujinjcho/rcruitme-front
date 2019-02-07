@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import Alert from 'react-bootstrap/lib/Alert';
 import Container from 'react-bootstrap/lib/Container';
-import { parse } from 'qs';
 
 import formFields from './signUpFormFields';
 import formFrom from './formFrom';
+import query from './query';
 
 const SignUpForm = formFrom(formFields);
 
@@ -15,7 +15,7 @@ class SignUp extends Component {
   };
 
   redirectUrl() {
-    const { redirect } = parse(window.location.search, { ignoreQueryPrefix: true });
+    const { redirect } = query.parameters();
     return redirect ? redirect : window.location.origin;
   };
 
