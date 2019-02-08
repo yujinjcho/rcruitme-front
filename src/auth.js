@@ -1,4 +1,4 @@
-import { parse } from 'qs';
+import query from './query';
 
 const key = 'X-Auth-Token';
 
@@ -12,8 +12,8 @@ const save = token =>
 const saveFromHeaders = headers =>
   save(headers.get(key));
 
-const saveFromQueryString = query =>
-  save(parse(query, { ignoreQueryPrefix: true }).token);
+const saveFromQueryString = () =>
+  save(query.parameters().token);
 
 const logOut = () =>
   localStorage.removeItem('token');

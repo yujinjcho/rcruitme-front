@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Navbar, Nav } from 'react-bootstrap';
 import SignOut from './SignOut';
+import CreateAccount from './CreateAccount';
+import auth from './auth';
 
 class Navigation extends Component {
 
@@ -12,7 +14,7 @@ class Navigation extends Component {
         <Nav className="mr-auto">
         </Nav>
         <Nav>
-          <SignOut />
+          {auth.loggedIn() ? <SignOut /> : <CreateAccount />}
         </Nav>
       </Navbar>
     );

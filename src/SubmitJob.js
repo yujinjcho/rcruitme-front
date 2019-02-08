@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import Alert from 'react-bootstrap/lib/Alert';
 import Container from 'react-bootstrap/lib/Container';
 
+import auth from './auth';
 import formFields from './submitJobFormFields';
 import formFrom from './formFrom';
 
@@ -16,7 +18,10 @@ class SubmitJob extends Component {
   handleMessage = type => message =>
     this.setState({ [type]: message });
 
+
   render() {
+    if (!auth.loggedIn()) return <Redirect to={"/sign-in?redirect=" + window.location.href} />;
+
     return (
       <Container>
         <h1>Submit Job</h1>
