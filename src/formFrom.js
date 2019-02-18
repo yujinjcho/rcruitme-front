@@ -38,7 +38,7 @@ export default formFields => {
       e.stopPropagation();
 
       fetch(this.props.endpoint, {
-        method: 'POST',
+        method: this.props.method || 'POST',
         headers: {
           ...(this.props.authed ? auth.header() : {}),
           'X-Requested-With': 'XMLHTTPRequest',
