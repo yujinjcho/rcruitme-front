@@ -15,6 +15,7 @@ class SelectUserType extends Component {
       <Container>
         <h1>Select User Type</h1>
         <SelectUserTypeForm
+          authed
           endpoint="/user"
           method="PUT"
           onSuccess={this.handleSuccess}
