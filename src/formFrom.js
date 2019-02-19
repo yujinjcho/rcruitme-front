@@ -46,7 +46,7 @@ export default formFields => {
         },
         body: stringify(this.state.fields)
       })
-        .then(res => res.status === 400
+        .then(res => res.status !== 200
           ? res.json().then(this.handleError)
           : res.json().then(data => this.handleSuccess(data, res))
         )
@@ -68,7 +68,7 @@ export default formFields => {
       this.setState({
         errors
       }, () => {
-        this.props.onError(this.props.errorMessage || 'Please correctly fill out required fields.');
+        this.props.onError(errors.errors.errorMessage || 'Please correctly fill out required fields.');
         this.props.onMessage('');
       });
 
