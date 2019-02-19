@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import AuthRedirect from './AuthRedirect';
 import Home from './Home';
+import SelectUserType from './SelectUserType';
 import SignUp from './SignUp';
 import SignIn from './SignIn';
 import SubmitJob from './SubmitJob';
@@ -16,6 +17,7 @@ class App extends Component {
           <div>
             <Navigation />
             <Route exact path="/" component={Home} />
+            <Route exact path="/select-user-type" component={SelectUserType} />
             <Route exact path="/sign-up" component={SignUp} />
             <Route exact path="/sign-in" component={SignIn} />
             <Route path="/submit-job/:candidateId" component={SubmitJob} />

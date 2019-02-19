@@ -1,11 +1,7 @@
+import userTypeFormField from './userTypeFormField';
+
 export default [
-  {
-    label: 'User Type',
-    name: 'userType',
-    type: 'select',
-    options: ['candidate', 'recruiter'],
-    initial: 'candidate'
-  },
+  ...userTypeFormField,
   {
     label: 'Email',
     name: 'email',
