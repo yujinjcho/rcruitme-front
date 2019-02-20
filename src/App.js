@@ -8,6 +8,7 @@ import SignUp from './SignUp';
 import SignIn from './SignIn';
 import SubmitJob from './SubmitJob';
 import Navigation from './Navigation';
+import ActivateMessage from './ActivateMessage';
 
 class App extends Component {
   render() {
@@ -18,6 +19,7 @@ class App extends Component {
             <Navigation />
             <Route exact path="/" component={Home} />
             <Route exact path="/select-user-type" component={SelectUserType} />
+            <Route exact path="/activate-message" component={ActivateMessage} />
             <Route exact path="/sign-up" component={SignUp} />
             <Route exact path="/sign-in" component={SignIn} />
             <Route path="/submit-job/:candidateId" component={SubmitJob} />

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import withUserType from './withUserType';
+import withUserValidation from './withUserValidation';
 
 const Home = () => (
   <div>
@@ -8,4 +8,4 @@ const Home = () => (
   </div>
 );
 
-export default withUserType(Home);
+export default withUserValidation(Home);
