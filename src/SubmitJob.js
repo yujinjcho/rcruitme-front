@@ -29,7 +29,7 @@ class SubmitJob extends Component {
         {this.state.error && <Alert variant="danger">{this.state.error}</Alert>}
         <SubmitJobForm
           authed
-          endpoint="/submit-job"
+          endpoint= {"/submit-job/" + this.props.match.params.candidateId}
           onMessage={this.handleMessage('message')}
           onError={this.handleMessage('error')}
           successMessage="Job submitted."
