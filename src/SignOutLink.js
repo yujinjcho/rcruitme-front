@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Nav } from 'react-bootstrap';
 import auth from './auth';
 
-class SignOut extends Component {
+class SignOutLink extends Component {
 
   logOut() {
     auth.logOut();
@@ -19,4 +19,4 @@ class SignOut extends Component {
   }
 }
 
-export default SignOut;
+export default SignOutLink;

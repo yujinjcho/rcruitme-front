@@ -11,7 +11,7 @@ class CreateAccount extends Component {
     const baseUrl = "/sign-up"
     const url = redirect ? `${baseUrl}?redirect=${redirect}` : baseUrl;
     return (
-      <Nav.Item>
+      <Nav.Item className="px-3">
         <Link to={url}>Create Account</Link>
       </Nav.Item>
     );
