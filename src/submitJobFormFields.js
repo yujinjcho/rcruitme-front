@@ -2,36 +2,38 @@ export default [
   {
     label: 'Role',
     name: 'role',
-    type: 'input'
+    tagType: 'input'
   },
   {
     label: 'Company',
     name: 'company',
-    type: 'input'
+    tagType: 'input'
   },
   {
     label: 'Location',
     name: 'location',
-    type: 'input'
+    tagType: 'input'
   },
   {
     label: 'Annual Salary',
     name: 'salary',
-    type: 'input'
+    tagType: 'input',
+    type: 'number'
   },
   {
-    label: 'Additional Compensation',
+    label: 'Annual Total Compensation (estimated)',
     name: 'compensation',
-    type: 'input'
+    tagType: 'input',
+    type: 'number'
   },
   {
     label: 'Description',
     name: 'description',
-    type: 'textarea'
+    tagType: 'textarea'
   },
   {
     label: 'Benefits / Other',
     name: 'benefits',
-    type: 'textarea'
+    tagType: 'textarea'
   }
 ];

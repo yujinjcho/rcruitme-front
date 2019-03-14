@@ -77,16 +77,17 @@ export default formFields => {
 
       return (
         <Form onSubmit={this.handleSubmit}>
-          {formFields.map(({ label, name, type, options }) => (
+          {formFields.map(({ label, name, tagType, type, options }) => (
             <Form.Group key={name}>
               <Form.Label>{label}</Form.Label>
               <Form.Control
                 name={name}
-                as={type}
+                as={tagType}
+                type={type}
                 value={fields[name]}
                 onChange={this.handleChange(name)}
                 isInvalid={!this.props.hideInvalid && errors[name]}
-                children={optionsForField(type)(options)}
+                children={optionsForField(tagType)(options)}
               />
             </Form.Group>
           ))}

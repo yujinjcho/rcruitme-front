@@ -3,15 +3,20 @@ import { Link } from 'react-router-dom';
 import { Nav } from 'react-bootstrap';
 import auth from './auth';
 
-class SignOut extends Component {
+class SignOutLink extends Component {
+
+  handleLogOut() {
+    auth.logOut();
+    this.props.history.push('/');
+  };
 
   render() {
     return (
       <Nav.Item>
-        <Link to='/' onClick={auth.logOut}>Sign Out</Link>
+        <Link to='/' onClick={this.handleLogOut}>Sign Out</Link>
       </Nav.Item>
     );
   }
 }
 
-export default SignOut;
+export default SignOutLink;

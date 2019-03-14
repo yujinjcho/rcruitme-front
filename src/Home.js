@@ -1,11 +1,20 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-import withUserValidation from './withUserValidation';
+import LandingPage from './LandingPage';
+import Dashboard from './Dashboard';
 
-const Home = () => (
-  <div>
-    <h1>Home</h1>
-  </div>
-);
+import auth from './auth';
 
-export default withUserValidation(Home);
+class Home extends Component {
+
+  state = {
+    loggedIn: auth.loggedIn()
+  };
+
+  render() {
+    const { loggedIn } = this.state;
+    return loggedIn ? <Dashboard /> : <LandingPage />
+  }
+}
+
+export default Home;
