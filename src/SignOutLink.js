@@ -5,7 +5,7 @@ import auth from './auth';
 
 class SignOutLink extends Component {
 
-  logOut() {
+  handleLogOut() {
     auth.logOut();
     this.props.history.push('/');
   };
@@ -13,7 +13,7 @@ class SignOutLink extends Component {
   render() {
     return (
       <Nav.Item>
-        <Link to='/' onClick={this.logOut}>Sign Out</Link>
+        <Link to='/' onClick={this.handleLogOut}>Sign Out</Link>
       </Nav.Item>
     );
   }

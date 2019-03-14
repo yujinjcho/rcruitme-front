@@ -13,7 +13,7 @@ class Home extends Component {
 
   render() {
     const { loggedIn } = this.state;
-    return loggedIn ? < Dashboard /> : < LandingPage />
+    return loggedIn ? <Dashboard /> : <LandingPage />
   }
 }
 
