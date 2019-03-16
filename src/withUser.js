@@ -8,11 +8,16 @@ export default Wrapped => {
       user: null
     };
 
+    handleError(error) {
+      this.setState({ user: null });
+      auth.logOut();
+    }
+
     componentDidMount() {
       fetch('/user', { headers: auth.header() })
         .then(res => res.json())
         .then(user => this.setState({ user }))
-        .catch(_ => this.props.history.push('/sign-in'));
+        .catch(this.handleError.bind(this));
     }
 
     render() {
