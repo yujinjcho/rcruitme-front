@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Navbar, Nav } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
 import SignInLink from './SignInLink';
 import SignOutLink from './SignOutLink';
 import CreateAccount from './CreateAccount';
