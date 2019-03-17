@@ -6,9 +6,9 @@ class SignInLink extends Component {
 
   render() {
     return (
-      <Nav.Item>
-        <Link to='/sign-in' >Sign In</Link>
-      </Nav.Item>
+      <Nav.Link href='/sign-in' >
+        Sign In
+      </Nav.Link>
     );
   }
 }

@@ -11,19 +11,23 @@ class Navigation extends Component {
   render() {
 
     return (
-      <Navbar bg="light" expand="lg">
-        <Navbar.Brand>
-          <Link to='/' >Rcruitme</Link>
+
+      <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
+        <Navbar.Brand href="/">
+          Rcruitme
         </Navbar.Brand>
-        <Nav className="mr-auto">
-        </Nav>
 
-
-        <Nav>
-          { !auth.loggedIn() && <CreateAccount /> }
-          {auth.loggedIn() ? <SignOutLink /> : <SignInLink />}
-        </Nav>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav">
+          <Nav className="mr-auto">
+          </Nav>
+          <Nav>
+            { !auth.loggedIn() && <CreateAccount /> }
+            {auth.loggedIn() ? <SignOutLink /> : <SignInLink />}
+          </Nav>
+        </Navbar.Collapse>
       </Navbar>
+
     );
   }
 }
