@@ -11,7 +11,7 @@ class Navigation extends Component {
 
     return (
 
-      <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
+      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
         <Navbar.Brand href="/">
           Rcruitme
         </Navbar.Brand>
