@@ -2,11 +2,11 @@ export default [
   {
     label: 'Email',
     name: 'email',
-    type: 'input'
+    tagType: 'input'
   },
   {
     label: 'Password',
     name: 'password',
-    type: 'input'
+    tagType: 'input'
   }
 ];

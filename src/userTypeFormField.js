@@ -2,7 +2,7 @@ export default [
   {
     label: 'User Type',
     name: 'userType',
-    type: 'select',
+    tagType: 'select',
     options: ['candidate', 'recruiter'],
     initial: 'candidate'
   }

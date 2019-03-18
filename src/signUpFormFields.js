@@ -5,21 +5,21 @@ export default [
   {
     label: 'Email',
     name: 'email',
-    type: 'input'
+    tagType: 'input'
   },
   {
     label: 'First Name',
     name: 'firstName',
-    type: 'input'
+    tagType: 'input'
   },
   {
     label: 'Last Name',
     name: 'lastName',
-    type: 'input'
+    tagType: 'input'
   },
   {
     label: 'Password',
     name: 'password',
-    type: 'input'
+    tagType: 'input'
   }
 ];
