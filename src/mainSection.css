@@ -1,3 +1,9 @@
+.main-section-container {
+  color: white;
+  text-align: center;
+  font-family: Trebuchet MS
+}
+
 .main-header {
   padding-top: 200px;
   font-weight: bold;
@@ -16,7 +22,19 @@
   background-size: cover;
 }
 
-.main-section-container {
-  color: white;
+.description-section-container {
+  font-family: Trebuchet MS;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.description-title {
+  padding-top: 25px;
+}
+
+.footer {
   text-align: center;
+  line-height: 60px;
+  background: #444;
+  color: white;
 }
