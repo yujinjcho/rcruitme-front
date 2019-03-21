@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { Nav } from 'react-bootstrap';
 import auth from './auth';
 
@@ -12,9 +11,9 @@ class SignOutLink extends Component {
 
   render() {
     return (
-      <Nav.Item>
-        <Link to='/' onClick={this.handleLogOut}>Sign Out</Link>
-      </Nav.Item>
+      <Nav.Link href='/' onClick={this.handleLogOut} >
+        Sign Out
+      </Nav.Link>
     );
   }
 }

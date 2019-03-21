@@ -1,0 +1,40 @@
+.main-section-container {
+  color: white;
+  text-align: center;
+  font-family: Trebuchet MS
+}
+
+.main-header {
+  padding-top: 200px;
+  font-weight: bold;
+  font-size: 300%;
+}
+
+.main-description {
+  padding-top: 30px;
+  font-weight: bold;
+  font-size: 120%;
+}
+
+.main-image {
+  height: 600px;
+  background: linear-gradient( rgba(0,0,0,0.2), rgba(0, 0, 0, 0.2) ),url(/img/main-image.jpg) center;
+  background-size: cover;
+}
+
+.description-section-container {
+  font-family: Trebuchet MS;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.description-title {
+  padding-top: 25px;
+}
+
+.footer {
+  text-align: center;
+  line-height: 60px;
+  background: #444;
+  color: white;
+}
