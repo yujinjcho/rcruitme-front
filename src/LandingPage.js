@@ -1,6 +1,6 @@
 import React from 'react';
 import Container from 'react-bootstrap/lib/Container';
-import './mainSection.css';
+import './LandingPage.css';
 
 const LandingPage = () => {
   return (
