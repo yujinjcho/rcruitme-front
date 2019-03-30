@@ -1,21 +1,19 @@
-import  React, { Component } from 'react';
+import  React from 'react';
 import jobUtils from './jobUtils';
 import './JobItem.css';
 
-class JobItem extends Component {
+const JobItem = (props) => {
 
-  render() {
-    const job = this.props.job;
-    return (
-      <tr className="job-item" onClick = {this.props.onClick}>
-        <td>{job.role}</td>
-        <td>{job.company}</td>
-        <td>{job.location}</td>
-        <td>{jobUtils.formatCurrency(job.salary)}</td>
-        <td>{jobUtils.formatDate(job.submittedAt)}</td>
-      </tr>
-    );
-  }
-};
+  const { job, onClick } = props;
+  return (
+    <tr className="job-item" onClick={ onClick }>
+       <td>{ job.role }</td>
+       <td>{ job.company }</td>
+       <td>{ job.location }</td>
+       <td>{ jobUtils.formatCurrency(job.salary) }</td>
+       <td>{ jobUtils.formatDate(job.submittedAt) }</td>
+     </tr>
+  );
+}
 
 export default JobItem;

@@ -27,7 +27,7 @@ class JobList extends Component {
       <table className="table">
         <thead>
           <tr>
-            { headers.map((header, index) => <th key={index}>{header}</th>) }
+            { headers.map(header => <th key={header}>{header}</th>) }
           </tr>
         </thead>
         <tbody>
