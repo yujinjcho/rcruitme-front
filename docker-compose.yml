@@ -1,0 +1,31 @@
+version: '3'
+services:
+  client:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - "./:/rcruitme-front"
+    restart: always
+    ports:
+      - "3000:3000"
+    links:
+      - rcruitme
+    networks:
+      - webappnetwork
+  rcruitme:
+    image: rcruitme
+    restart: always
+    ports:
+      - "9000:9000"
+    networks:
+      - webappnetwork
+    environment:
+      - "GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}"
+      - "GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET}"
+      - "JDBC_URL=${JDBC_URL}"
+      - "DB_USER=${DB_USER}"
+
+networks:
+  webappnetwork:
+    driver: bridge
