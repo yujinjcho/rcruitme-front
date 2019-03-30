@@ -2,9 +2,8 @@ import  React from 'react';
 import jobUtils from './jobUtils';
 import './JobItem.css';
 
-const JobItem = (props) => {
+const JobItem = ({ job, onClick }) => {
 
-  const { job, onClick } = props;
   return (
     <tr className="job-item" onClick={ onClick }>
        <td>{ job.role }</td>
