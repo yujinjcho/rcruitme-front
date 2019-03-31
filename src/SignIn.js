@@ -38,7 +38,7 @@ class SignIn extends Component {
   componentDidMount() {
     const { redirect } = query.parameters()
     if (redirect) this.setState({ redirect: redirect });
-    fetch('/sign-in')
+    fetch(process.env.REACT_APP_SERVICES_BASE_URL + '/sign-in')
       .then(res => res.json())
       .then(data => this.setState(data));
   }

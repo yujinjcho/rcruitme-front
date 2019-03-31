@@ -37,7 +37,7 @@ export default formFields => {
       e.preventDefault();
       e.stopPropagation();
 
-      fetch(this.props.endpoint, {
+      fetch(process.env.REACT_APP_SERVICES_BASE_URL + this.props.endpoint, {
         method: this.props.method || 'POST',
         headers: {
           ...(this.props.authed ? auth.header() : {}),
