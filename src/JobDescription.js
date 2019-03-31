@@ -18,51 +18,55 @@ class JobDescription extends Component {
   }
 
   render() {
-    return (
-      <Container>
-        { this.state.job &&
+    if (this.state.job) {
+      const { role, company, location, salary, submittedAt} = this.state.job;
+      return (
+        <Container>
           <div className="job-description">
 
             <h3>
               Role
             </h3>
             <div className="job-field">
-              {this.state.job.role}
+              {role}
             </div>
 
             <h3>
               Company
             </h3>
             <div className="job-field">
-              {this.state.job.company}
+              {company}
             </div>
 
             <h3>
               Location
             </h3>
             <div className="job-field">
-              {this.state.job.location}
+              {location}
             </div>
 
             <h3>
               Salary
             </h3>
             <div className="job-field">
-              {jobUtils.formatCurrency(this.state.job.salary)}
+              {jobUtils.formatCurrency(salary)}
             </div>
 
             <h3>
               Date
             </h3>
             <div className="job-field">
-              {jobUtils.formatDate(this.state.job.submittedAt)}
+              {jobUtils.formatDate(submittedAt)}
             </div>
 
           </div>
-        }
 
-      </Container>
-    );
+        </Container>
+      );
+
+    } else {
+      return <div>Job details are loading...</div>
+    }
   }
 }
 export default withUserValidation(JobDescription);
