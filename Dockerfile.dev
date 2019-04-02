@@ -1,0 +1,12 @@
+FROM node:11.6.0
+
+ARG CUR_DIR=/rcruitme-front
+
+RUN mkdir $CUR_DIR
+WORKDIR $CUR_DIR
+
+COPY package.json $CUR_DIR/package.json
+COPY npm-shrinkwrap.json $CUR_DIR/npm-shrinkwrap.json
+
+RUN npm install
+CMD npm start
