@@ -9,6 +9,8 @@ import SignIn from './SignIn';
 import SubmitJob from './SubmitJob';
 import Navigation from './Navigation';
 import ActivateMessage from './ActivateMessage';
+import JobDescription from './JobDescription';
+
 
 class App extends Component {
   render() {
@@ -23,6 +25,7 @@ class App extends Component {
             <Route exact path="/sign-up" component={SignUp} />
             <Route exact path="/sign-in" component={SignIn} />
             <Route path="/submit-job/:candidateId" component={SubmitJob} />
+            <Route path="/job/:jobId" component={JobDescription} />
             <Route path="/auth" component={AuthRedirect} />
           </div>
         </Router>
