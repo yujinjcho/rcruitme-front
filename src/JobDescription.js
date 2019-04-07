@@ -4,6 +4,7 @@ import withUserValidation from './withUserValidation';
 import jobUtils from './jobUtils';
 import './JobDescription.css';
 
+import getPath from './api';
 import auth from './auth';
 
 class JobDescription extends Component {
@@ -12,7 +13,7 @@ class JobDescription extends Component {
   };
 
   componentDidMount() {
-    fetch(`/job/${this.props.match.params.jobId}`, { headers: auth.header() })
+    fetch(getPath(`/job/${this.props.match.params.jobId}`), { headers: auth.header() })
       .then(res => res.json())
       .then(data => this.setState({ job: data }));
   }
