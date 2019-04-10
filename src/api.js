@@ -1,5 +1,5 @@
 
-const baseUrl = process.env.REACT_APP_SERVICES_BASE_URL ? process.env.REACT_APP_SERVICES_BASE_URL : '';
+const baseUrl = process.env.REACT_APP_SERVICES_BASE_URL || '';
 
 const getPath = (resource) => baseUrl + resource;
 
