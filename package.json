@@ -2,7 +2,6 @@
   "name": "rcruitme-front",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://rcruitme:9000",
   "devDependencies": {
     "react-scripts": "2.1.2"
   },

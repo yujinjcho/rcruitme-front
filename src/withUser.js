@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
+import getPath from './api';
 import auth from './auth';
 
 export default Wrapped => {
@@ -16,7 +17,7 @@ export default Wrapped => {
     }
 
     componentDidMount() {
-      fetch('/user', { headers: auth.header() })
+      fetch(getPath('/user'), { headers: auth.header() })
         .then(res => res.json())
         .then(user => this.setState({ user }))
         .catch(this.handleError);

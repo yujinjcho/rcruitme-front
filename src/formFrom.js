@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/lib/Button';
 import Form from 'react-bootstrap/lib/Form';
 import { stringify } from 'qs';
 
+import getPath from './api';
 import auth from './auth';
 import capitalize from './capitalize';
 import noop from './noop';
@@ -37,7 +38,7 @@ export default formFields => {
       e.preventDefault();
       e.stopPropagation();
 
-      fetch(this.props.endpoint, {
+      fetch(getPath(this.props.endpoint), {
         method: this.props.method || 'POST',
         headers: {
           ...(this.props.authed ? auth.header() : {}),

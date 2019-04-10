@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
+import getPath from './api';
 import auth from './auth';
 import jobUtils from './jobUtils';
 import JobItem from './JobItem';
@@ -11,7 +12,7 @@ class JobList extends Component {
   };
 
   componentDidMount() {
-    fetch('/jobs', { headers: auth.header() })
+    fetch(getPath('/jobs'), { headers: auth.header() })
       .then(res => res.json())
       .then(data => this.setState({jobs: data}));
   }

@@ -5,6 +5,7 @@ import Container from 'react-bootstrap/lib/Container';
 import url from 'url';
 
 import auth from './auth';
+import getPath from './api';
 import query from './query';
 
 import capitalize from './capitalize';
@@ -38,7 +39,7 @@ class SignIn extends Component {
   componentDidMount() {
     const { redirect } = query.parameters()
     if (redirect) this.setState({ redirect: redirect });
-    fetch('/sign-in')
+    fetch(getPath('/sign-in'))
       .then(res => res.json())
       .then(data => this.setState(data));
   }
