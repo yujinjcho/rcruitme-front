@@ -1,4 +1,4 @@
-FROM node:11.6.0
+FROM node:11.6.0-alpine
 
 ENV NPM_CONFIG_LOGLEVEL warn
 
